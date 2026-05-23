@@ -6,103 +6,207 @@ import React from 'react';
 
 const Spinner: React.FC = () => {
   return (
-    <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center select-none z-30 bg-[#0a0a0a]/75 backdrop-blur-md rounded-2xl overflow-hidden animate-fade-in">
+    <div className="absolute inset-0 w-full h-full flex items-center justify-center select-none z-30 bg-[#060607]/80 backdrop-blur-md rounded-2xl overflow-hidden animate-fade-in">
       <style>{`
-        @keyframes geminiShimmer {
+        @keyframes heartbeat {
+          0%, 100% {
+            transform: scale(0.96);
+            filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.5)) drop-shadow(0 0 25px rgba(138, 43, 226, 0.25));
+          }
+          50% {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 22px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 40px rgba(138, 43, 226, 0.5));
+          }
+        }
+
+        @keyframes shimmerWave {
           0% {
-            background-position: 200% 0;
+            stroke-dashoffset: 560;
           }
           100% {
-            background-position: -200% 0;
+            stroke-dashoffset: 0;
           }
         }
 
-        @keyframes pulseGlow {
+        @keyframes microRotateClockwise {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes microRotateCounter {
+          0% {
+            transform: rotate(360deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+
+        @keyframes bloomPulse {
           0%, 100% {
+            opacity: 0.18;
+            transform: scale(0.9);
+          }
+          50% {
             opacity: 0.35;
-            transform: scale(0.95) translate(-50%, -50%);
-          }
-          50% {
-            opacity: 0.6;
-            transform: scale(1.08) translate(-50%, -50%);
+            transform: scale(1.15);
           }
         }
 
-        @keyframes waveFloat {
-          0%, 100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-8px) rotate(3deg);
-          }
+        .spinner-container {
+          animation: heartbeat 1.8s infinite ease-in-out;
         }
 
-        .gemini-shimmer-track {
-          background: linear-gradient(
-            90deg,
-            #1e1e1e 0%,
-            #1e1e1e 25%,
-            #00f0ff 40%,
-            #8a2be2 50%,
-            #00f0ff 60%,
-            #1e1e1e 75%,
-            #1e1e1e 100%
-          );
-          background-size: 200% 100%;
-          animation: geminiShimmer 1.8s infinite ease-in-out;
+        .vortex-dust-clockwise {
+          transform-origin: center;
+          animation: microRotateClockwise 15s infinite linear;
         }
 
-        .gemini-aurora-glow {
-          background: radial-gradient(circle, rgba(0, 240, 255, 0.45) 0%, rgba(138, 43, 226, 0.45) 50%, rgba(0, 0, 0, 0) 70%);
-          transform-origin: top left;
-          animation: pulseGlow 3s infinite ease-in-out;
+        .vortex-dust-counter {
+          transform-origin: center;
+          animation: microRotateCounter 22s infinite linear;
         }
 
-        .floating-element {
-          animation: waveFloat 4s infinite ease-in-out;
+        .shimmer-wave-stroke {
+          stroke-dasharray: 120 440;
+          animation: shimmerWave 1.8s infinite ease-in-out;
+        }
+
+        .bloom-layer {
+          animation: bloomPulse 3.6s infinite ease-in-out;
         }
       `}</style>
 
-      {/* Extreme Vibrant Ambient Backdrop Colorful Glow */}
-      <div className="absolute top-1/2 left-1/2 w-[480px] h-[480px] rounded-full filter blur-[80px] pointer-events-none z-0 gemini-aurora-glow" />
+      {/* Embedded Ambient Neon Bloom Blur Layer */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full pointer-events-none z-0 bloom-layer"
+        style={{
+          background: 'radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(138, 43, 226, 0.3) 50%, transparent 75%)',
+          filter: 'blur(35px)'
+        }}
+      />
 
-      {/* Floating Sparkle Wave Mask */}
-      <div className="relative flex flex-col items-center justify-center z-10 w-full max-w-md px-12 text-center floating-element">
-        {/* Gemini Sparkle Core Indicator */}
-        <div className="relative w-16 h-16 mb-8 flex items-center justify-center">
-          {/* Glowing Aura Ring */}
-          <div className="absolute inset-0 rounded-full border-2 border-[#00f0ff]/20 animate-ping opacity-75" />
-          <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#00f0ff]/30 to-[#8a2be2]/30 blur-md animate-pulse" />
-          
-          {/* Elegant Geometric Sparkle */}
-          <svg className="w-10 h-10 relative z-10 drop-shadow-[0_0_12px_rgba(0,240,255,0.85)]" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 2C12 7.52285 7.52285 12 2 12C7.52285 12 12 16.4771 12 22C12 16.4771 16.4771 12 22 12C16.4771 12 12 7.52285 12 2"
-              fill="url(#geminiSparkGrad)"
-            />
-            <defs>
-              <linearGradient id="geminiSparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00f0ff" />
-                <stop offset="100%" stopColor="#8a2be2" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+      {/* Main Vector Motion Assembly */}
+      <div className="relative flex items-center justify-center z-10 w-44 h-44 spinner-container">
+        
+        {/* SVG Core Assembly */}
+        <svg 
+          className="w-full h-full overflow-visible" 
+          viewBox="0 0 200 200" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Neon Cyan Inner Dense Sparkle Constellation */}
+          <g className="vortex-dust-clockwise">
+            {Array.from({ length: 48 }).map((_, idx) => {
+              const angle = (idx * Math.PI * 2) / 48;
+              const r = 50 + Math.sin(idx * 0.8) * 4; // micro wave displacement
+              const px = 100 + Math.cos(angle) * r;
+              const py = 100 + Math.sin(angle) * r;
+              return (
+                <circle 
+                  key={`c-cw-${idx}`} 
+                  cx={px} 
+                  cy={py} 
+                  r={0.6 + (idx % 3) * 0.3} 
+                  fill="#00f0ff" 
+                  className="opacity-70"
+                />
+              );
+            })}
+          </g>
 
-        {/* Shimmer Wave Track Indicator */}
-        <div className="w-full h-[6px] rounded-full bg-[#1e1e1e] border border-white/[0.04] p-[1px] shadow-2xl overflow-hidden mb-4">
-          <div className="h-full w-full rounded-full gemini-shimmer-track" />
-        </div>
+          {/* Opposing Outer Cyan Constellation */}
+          <g className="vortex-dust-counter">
+            {Array.from({ length: 64 }).map((_, idx) => {
+              const angle = (idx * Math.PI * 2) / 64;
+              const r = 70 + Math.cos(idx * 0.6) * 5; // offset wave displacement
+              const px = 100 + Math.cos(angle) * r;
+              const py = 100 + Math.sin(angle) * r;
+              return (
+                <circle 
+                  key={`c-ccw-${idx}`} 
+                  cx={px} 
+                  cy={py} 
+                  r={0.4 + (idx % 2) * 0.4} 
+                  fill="#00f0ff" 
+                  className="opacity-50"
+                />
+              );
+            })}
+          </g>
 
-        {/* Minimal dynamic state status text */}
-        <div className="flex flex-col gap-1 items-center">
-          <span className="text-[10px] font-bold tracking-[0.25em] text-[#00f0ff]/85 uppercase font-mono animate-pulse">
-            SYNTHESIZING
-          </span>
-          <span className="text-[11px] font-semibold tracking-wider text-gray-400 select-none">
-            Generative rendering engine active
-          </span>
-        </div>
+          {/* Micro filaments of spiral rays */}
+          <g className="vortex-dust-clockwise opacity-40">
+            {Array.from({ length: 16 }).map((_, idx) => {
+              const angle = (idx * Math.PI * 2) / 16;
+              const px1 = 100 + Math.cos(angle) * 35;
+              const py1 = 100 + Math.sin(angle) * 35;
+              const px2 = 100 + Math.cos(angle + 0.3) * 85;
+              const py2 = 100 + Math.sin(angle + 0.3) * 85;
+              return (
+                <path 
+                  key={`ray-${idx}`}
+                  d={`M ${px1} ${py1} Q ${100 + Math.cos(angle + 0.15) * 60} ${100 + Math.sin(angle + 0.15) * 60}, ${px2} ${py2}`}
+                  stroke="url(#filamentGradient)"
+                  strokeWidth="0.4"
+                  strokeDasharray="4 8"
+                />
+              );
+            })}
+          </g>
+
+          {/* Seamless base glowing neon cyan circle (filament) */}
+          <circle 
+            cx="100" 
+            cy="100" 
+            r="60" 
+            stroke="url(#vortexRingGrad)" 
+            strokeWidth="1.5" 
+            className="opacity-80"
+          />
+
+          {/* The flowing concentrated electric violet shimmering wave */}
+          <circle 
+            cx="100" 
+            cy="100" 
+            r="60" 
+            stroke="url(#shimmerRingGrad)" 
+            strokeWidth="3.2" 
+            strokeLinecap="round"
+            className="shimmer-wave-stroke"
+            style={{ transformOrigin: 'center', transform: 'rotate(-90deg)' }}
+          />
+
+          <defs>
+            {/* Filament Radial Glow Gradient */}
+            <linearGradient id="vortexRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#00f0ff" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#00f0ff" stopOpacity="0.8" />
+            </linearGradient>
+
+            {/* Shimmering Violet wave gradient */}
+            <linearGradient id="shimmerRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(138, 43, 226, 0)" />
+              <stop offset="45%" stopColor="#8a2be2" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#c084fc" /> {/* super glowing violet peak */}
+              <stop offset="55%" stopColor="#8a2be2" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="rgba(138, 43, 226, 0)" />
+            </linearGradient>
+
+            {/* Inward Filament Spiral Gradient */}
+            <radialGradient id="filamentGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#8a2be2" stopOpacity="0.6" />
+            </radialGradient>
+          </defs>
+        </svg>
+
       </div>
     </div>
   );
