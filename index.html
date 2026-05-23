@@ -19,8 +19,24 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo+Black&family=Bebas+Neue&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://esm.sh/react-image-crop@^11.0.6/dist/ReactCrop.css" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Libre Franklin"', 'Inter', 'sans-serif'],
+          archivo: ['"Archivo Black"', 'sans-serif'],
+          bebas: ['"Bebas Neue"', 'sans-serif'],
+          franklin: ['"Libre Franklin"', 'sans-serif'],
+          lilita: ['"Lilita One"', 'sans-serif'],
+          roboto: ['Roboto', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
 <style>
 body {
     font-family: 'Inter', sans-serif;

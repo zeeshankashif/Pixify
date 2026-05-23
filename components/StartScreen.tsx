@@ -55,14 +55,14 @@ const StartScreen: React.FC<StartScreenProps> = ({ onFileSelect }) => {
 
         {/* Dynamic Headers based on Choice */}
         <div className="flex flex-col items-center gap-2 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#f3f4f6] leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-archivo tracking-tight text-[#f3f4f6] leading-tight uppercase">
             {selectedMode === 'ai' ? (
               <>
-                AI-Powered Laboratory, <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-black">Redetermined</span>.
+                AI-Powered Laboratory, <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Redetermined</span>.
               </>
             ) : (
               <>
-                Classical Darkroom, <span className="text-amber-500 font-extrabold font-mono">PRO LIGHTROOM</span>.
+                Classical Darkroom, <span className="text-amber-500">PRO LIGHTROOM</span>.
               </>
             )}
           </h1>
@@ -108,7 +108,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onFileSelect }) => {
           {/* Card B: Pro Lightroom */}
           <button
             type="button"
-            onClick={() => setSelectedMode('get' as any || 'lightroom')} // robust mapping
+            onClick={() => setSelectedMode('lightroom')}
             className={`p-5 rounded-2xl border text-left flex gap-4 transition-all duration-300 relative select-none ${
               selectedMode === 'lightroom'
                 ? 'bg-amber-500/[0.04] border-amber-500/80 shadow-[0_4px_24px_rgba(245,158,11,0.15)] scale-[1.01]'
@@ -140,7 +140,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onFileSelect }) => {
         <div className="mt-6 flex flex-col items-center gap-3">
           <label 
             htmlFor="image-upload-start" 
-            className={`relative inline-flex items-center justify-center px-12 py-5 text-base font-bold font-sans text-white rounded-full cursor-pointer group hover:brightness-105 border-4 border-white/10 transition-all select-none hover:scale-[1.04] active:scale-[0.96] ${
+            className={`relative inline-flex items-center justify-center px-12 py-5 text-base font-black font-archivo uppercase text-white rounded-full cursor-pointer group hover:brightness-105 border-4 border-white/10 transition-all select-none hover:scale-[1.04] active:scale-[0.96] ${
               selectedMode === 'ai'
                 ? 'bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 shadow-[0_8px_30px_rgba(99,102,241,0.4)]'
                 : 'bg-amber-500 text-black shadow-[0_8px_30px_rgba(245,158,11,0.4)]'

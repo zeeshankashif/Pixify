@@ -525,7 +525,7 @@ const App: React.FC = () => {
             }`}
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Cancel</span>
+            <span className="hidden min-[360px]:inline">Cancel</span>
           </button>
           
           <div className="flex items-center gap-1">
@@ -565,7 +565,7 @@ const App: React.FC = () => {
                 title="Hold to see original"
               >
                 <Eye className="w-3.5 h-3.5" />
-                <span>Compare</span>
+                <span className="hidden min-[360px]:inline">Compare</span>
               </button>
             )}
           </div>
@@ -899,7 +899,7 @@ const App: React.FC = () => {
             </div>
             
             {/* Center Zoom bar mimicking the reference photo's scale visual slider */}
-            <div className="flex items-center gap-3 w-full max-w-xs px-4 py-1.5 bg-black/20 border border-white/[0.02] rounded-full text-[10px] font-mono uppercase tracking-wide text-gray-500 select-none">
+            <div className="hidden sm:flex items-center gap-3 w-full max-w-xs px-4 py-1.5 bg-black/20 border border-white/[0.02] rounded-full text-[10px] font-mono uppercase tracking-wide text-gray-500 select-none">
               <span className="shrink-0 text-gray-600 font-bold">Zoom Canvas:</span>
               <input
                 type="range"
@@ -915,7 +915,7 @@ const App: React.FC = () => {
             {/* Mobile-Only Dashboard Toolbar & Active Panel (Visible on screens smaller than lg) */}
             <div className="w-full lg:hidden flex flex-col gap-3 mt-1.5 pt-3.5 border-t border-white/[0.04]">
               {/* Toolbar Header Label */}
-              <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-gray-400">
+              <div className="hidden sm:flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-gray-400">
                 <span>Select active tool:</span>
                 <span className={editorMode === 'lightroom' ? 'text-amber-500' : 'text-indigo-400'}>
                   {activeTab === 'adjust' && 'Manual Tuning Sliders'}
@@ -926,7 +926,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Responsive Tab Bar block mimicking native appbars */}
-              <div className={`p-1 flex items-center justify-between gap-1 w-full shadow-lg transition-all duration-300 rounded-xl ${
+              <div className={`hidden sm:flex p-1 items-center justify-between gap-1 w-full shadow-lg transition-all duration-300 rounded-xl ${
                 editorMode === 'lightroom'
                   ? 'bg-[#18181a] border border-[#2d2d30]'
                   : 'bg-[#18191b]/95 border border-white/[0.05]'

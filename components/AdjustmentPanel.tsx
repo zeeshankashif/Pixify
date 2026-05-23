@@ -174,10 +174,12 @@ export const AdjustmentPanel: React.FC<AdjustmentPanelProps> = ({
   const headerUnderline = isLightroom ? 'border-amber-500 text-amber-500' : 'border-indigo-400 text-white';
 
   return (
-    <div className={`w-full p-5 flex flex-col gap-5 border animate-fade-in ${panelBg}`}>
+    <div className={`w-full p-3.5 sm:p-5 flex flex-col gap-3.5 sm:gap-5 border animate-fade-in ${panelBg}`}>
       
       {/* Visual Diagnostic Tools */}
-      <HistogramGraph data={histogramData} editorMode={editorMode} />
+      <div className="hidden sm:block">
+        <HistogramGraph data={histogramData} editorMode={editorMode} />
+      </div>
 
       {/* Primary Category Selector */}
       <div className={`flex p-0.5 mb-1 gap-1 overflow-x-auto scroller-none border-b ${
@@ -196,7 +198,7 @@ export const AdjustmentPanel: React.FC<AdjustmentPanelProps> = ({
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-1.5 px-3 py-2 border-b-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider select-none transition-all duration-200 shrink-0 ${
+              className={`flex items-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-3 sm:py-2 border-b-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider select-none transition-all duration-200 shrink-0 ${
                 isActive
                   ? headerUnderline
                   : 'border-transparent text-gray-500 hover:text-gray-300'
@@ -210,7 +212,7 @@ export const AdjustmentPanel: React.FC<AdjustmentPanelProps> = ({
       </div>
 
       {/* Active Tab Panel Sliders */}
-      <div className="flex flex-col gap-4 max-h-[360px] overflow-y-auto pr-1">
+      <div className="flex flex-col gap-3 sm:gap-4 max-h-[220px] sm:max-h-[360px] overflow-y-auto pr-1">
         
         {/* TAB 1: LIGHT */}
         {activeTab === 'light' && (

@@ -40,7 +40,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ onApplyFilter, isLoading }) =
   };
 
   return (
-    <div className="w-full bg-[#161719]/40 border border-white/[0.05] rounded-2xl p-6 flex flex-col gap-5 animate-fade-in backdrop-blur-md shadow-lg">
+    <div className="w-full bg-[#161719]/40 border border-white/[0.05] rounded-2xl p-4 sm:p-6 flex flex-col gap-3.5 sm:gap-5 animate-fade-in backdrop-blur-md shadow-lg">
       <div className="flex items-center gap-2 justify-center mb-1">
         <Palette className="w-4 h-4 text-purple-400" />
         <h3 className="text-xs font-bold tracking-widest text-[#f3f4f6] uppercase">Apply a Creative Filter</h3>
